@@ -1,0 +1,300 @@
+/* Importação da Fonte do Google */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+/* Variáveis de Cores (Tema Claro e Escuro) */
+:root {
+    --bg-color: #f4f7f9;
+    --text-color: #333;
+    --header-bg: #ffffff;
+    --section-bg: #ffffff;
+    --primary-color: #2a9d8f;
+    --secondary-color: #264653;
+    --border-color: #e0e0e0;
+    --shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --text-color: #e0e0e0;
+    --header-bg: #252525;
+    --section-bg: #2c2c2c;
+    --primary-color: #2a9d8f;
+    --secondary-color: #e9c46a;
+    --border-color: #444;
+    --shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos Gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+h1, h2, h3 {
+    color: var(--secondary-color);
+    font-weight: 500;
+}
+
+h2 {
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Header */
+header {
+    background-color: var(--header-bg);
+    padding: 20px 40px;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: padding 0.4s ease, background-color 0.3s;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+    gap: 30px;
+    transition: gap 0.4s ease;
+    /* --- ALTERADO --- Movido de .info-pessoal para cá para garantir consistência */
+    overflow: hidden; 
+}
+
+/* Estilos da Foto de Perfil */
+.profile-picture {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--primary-color);
+    box-shadow: var(--shadow);
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: width 0.4s ease, height 0.4s ease;
+}
+
+.profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.info-pessoal h1 {
+    margin-bottom: 5px;
+    font-size: 2em;
+    color: var(--primary-color);
+    transition: font-size 0.4s ease;
+}
+
+.info-pessoal p {
+    font-style: italic;
+    color: var(--text-color);
+    opacity: 0.8;
+    transition: opacity 0.3s ease, max-height 0.4s ease, margin-top 0.4s ease;
+    max-height: 50px;
+}
+
+.contato {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    transition: opacity 0.3s ease, max-height 0.4s ease, margin-top 0.4s ease;
+    max-height: 100px;
+}
+
+.contato span, .contato a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9em;
+}
+
+/* --- ESTILOS PARA O HEADER ENCOLHIDO --- */
+header.scrolled {
+    padding: 10px 40px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+header.scrolled .profile-picture {
+    width: 60px;
+    height: 60px;
+}
+
+header.scrolled .info-pessoal h1 {
+    font-size: 1.5em;
+    margin-bottom: 0;
+}
+
+header.scrolled .info-pessoal p, header.scrolled .contato {
+    opacity: 0;
+    max-height: 0;
+    margin-top: 0;
+    overflow: hidden;
+}
+
+
+/* Botão de Tema */
+.theme-switcher {
+    margin-left: auto; /* Garante que o botão fique à direita */
+}
+
+#theme-toggle {
+    background: none;
+    border: 2px solid var(--border-color);
+    color: var(--text-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: all 0.3s ease;
+    flex-shrink: 0; /* Impede que o botão encolha */
+}
+
+/* ... resto do CSS permanece igual até a seção de Responsividade ... */
+
+.info-pessoal {
+    /* --- ADICIONADO --- Garante que o texto não quebre de forma estranha */
+    white-space: nowrap; 
+}
+
+
+/* Seções Main, Skills, Footer, Modal etc. continuam aqui... */
+main { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+section { background-color: var(--section-bg); padding: 30px; margin-bottom: 25px; border-radius: 8px; box-shadow: var(--shadow); transition: background-color 0.3s, transform 0.3s; }
+section:hover { transform: translateY(-5px); }
+.skills-container { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+.skill-category { flex: 1; min-width: 280px; }
+.skill-category h3 { margin-bottom: 15px; font-size: 1.2em; }
+.skill-category ul { list-style: none; }
+.skill-category ul li { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; background-color: var(--bg-color); padding: 10px; border-radius: 5px; transition: background-color 0.3s; }
+.skill-category ul li i { color: var(--primary-color); width: 20px; text-align: center; }
+footer { text-align: center; padding: 20px; font-size: 0.9em; color: var(--text-color); opacity: 0.7; }
+.modal { display: none; position: fixed; z-index: 1001; padding-top: 50px; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.9); }
+.modal-content { margin: auto; display: block; width: auto; max-width: 80%; max-height: 80vh; animation-name: zoom; animation-duration: 0.4s; }
+@keyframes zoom { from {transform: scale(0)} to {transform: scale(1)} }
+.close-modal { position: absolute; top: 15px; right: 35px; color: #f1f1f1; font-size: 40px; font-weight: bold; transition: 0.3s; }
+.close-modal:hover, .close-modal:focus { color: #bbb; text-decoration: none; cursor: pointer; }
+
+/* ---------------------------------------------------- */
+/* --- SEÇÃO DE RESPONSIVIDADE TOTALMENTE REFEITA --- */
+/* ---------------------------------------------------- */
+
+@media (max-width: 768px) {
+    header {
+        padding: 15px 20px;
+    }
+
+    .header-container {
+        /* O truque principal: permitir que os itens quebrem para a linha de baixo */
+        flex-wrap: wrap; 
+        justify-content: center; /* Centraliza tudo no estado inicial */
+        gap: 15px 20px;
+    }
+
+    /* ESTADO INICIAL (NÃO ROLADO) */
+    .profile-picture {
+        /* Força a imagem a ocupar uma "linha" inteira, centralizada */
+        width: 120px;
+        order: 1; /* Garante que a foto venha primeiro */
+    }
+
+    .info-pessoal {
+        /* Força o bloco de texto a ocupar uma "linha" inteira, centralizado */
+        width: 100%;
+        text-align: center;
+        order: 2; /* Garante que as infos venham depois da foto */
+        white-space: normal; /* Permite quebra de linha no estado inicial */
+    }
+
+    .contato {
+        justify-content: center; /* Centraliza os ícones de contato */
+    }
+    
+    .theme-switcher {
+        order: 3; /* Botão de tema por último no estado inicial */
+        margin-left: 0; /* Remove a margem automática */
+    }
+
+    /* ESTADO ROLADO (.scrolled) */
+    header.scrolled .header-container {
+        /* Quando rolado, os itens não precisam mais quebrar a linha */
+        flex-wrap: nowrap;
+        justify-content: flex-start; /* Alinha à esquerda */
+        gap: 15px;
+    }
+    
+    header.scrolled .profile-picture {
+        width: 60px; /* Já definido antes, mas reforçando a ordem */
+        order: 1;
+    }
+
+    header.scrolled .info-pessoal {
+        /* Deixa o bloco de texto com largura automática para caber ao lado da foto */
+        width: auto;
+        text-align: left;
+        order: 2;
+        white-space: nowrap; /* Impede quebra de linha no estado encolhido */
+    }
+    
+    header.scrolled .theme-switcher {
+        order: 3;
+        margin-left: auto; /* Empurra o botão de volta para a direita */
+    }
+
+    /* Demais ajustes responsivos */
+    .skills-container, .contato {
+        flex-direction: column;
+    }
+
+    section {
+        padding: 20px;
+    }
+
+    .modal-content {
+        max-width: 90%;
+    }
+}
+
+
+/* Estilos para Impressão */
+@media print {
+    /* ... A seção de impressão permanece a mesma ... */
+    header, footer, #theme-toggle, .modal { display: none; }
+    body, section { background-color: #ffffff !important; color: #000000 !important; box-shadow: none; }
+    a { color: #000000 !important; text-decoration: none; }
+    main { margin: 0; padding: 0; }
+    section { margin-bottom: 15px; padding: 0; border: none; }
+}
